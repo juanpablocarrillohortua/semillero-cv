@@ -1,0 +1,48 @@
+# Environment
+.env
+.venv/
+env/
+venv/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Data (never commit large files)
+data/
+datasets/*/
+!datasets/README.md
+outputs/
+results/
+runs/
+
+# Models (download at runtime)
+*.pt
+*.pth
+*.onnx
+*.tflite
+*.engine
+*.mlmodel
+weights/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+wandb/
+mlruns/

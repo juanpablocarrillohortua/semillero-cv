@@ -1,0 +1,15 @@
+# Configuracion de experimento
+model:
+  name: yolov8n
+  weights: yolov8n.pt
+  confidence: 0.5
+
+data:
+  input: data/input/
+  output: outputs/
+
+training:
+  epochs: 50
+  batch_size: 16
+  image_size: 640
+  learning_rate: 0.01
