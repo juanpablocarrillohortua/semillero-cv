@@ -52,12 +52,19 @@ Con 24 GB de VRAM, la RTX A5000 cubre holgadamente todas las tareas del semiller
 
 ### Software del Laboratorio
 
-| Componente | Version |
-|------------|---------|
-| Python | 3.12 (via uv) |
-| PyTorch | 2.5.1 + CUDA 12.1 |
-| Package Manager | uv |
-| Entorno virtual | `.venv/` en la raiz del repo |
+| Componente | Version | Razon |
+|------------|---------|-------|
+| Python | **3.12** | MediaPipe NO tiene wheels para 3.13. NUNCA usar 3.13 |
+| PyTorch | **2.5.1 + cu121** | Driver 535 solo soporta hasta CUDA 12.2. cu121 es el unico wheel compatible. PyTorch 2.6+ solo tiene cu124+ que requiere driver 550+ |
+| Package Manager | **uv** | 10-100x mas rapido que pip, cache compartido entre usuarios del mismo PC |
+| Entorno virtual | `.venv/` en la raiz del repo | Creado por `install.sh` |
+| Node.js | 20.x | Para CLI agents (Gemini CLI, Codex, Claude Code) |
+
+**CRITICO — Restricciones de compatibilidad:**
+- **NO instalar PyTorch via `pip install torch`** sin `--index-url`. Descargaria cu124+ que NO funciona con driver 535.
+- **NO usar Python 3.13.** MediaPipe no tiene wheels y no compila desde source.
+- **NO instalar paquetes con `pip`.** Usar `uv pip install` (usa cache compartido, es mas rapido).
+- Si el usuario pide instalar algo: `uv pip install <paquete>` (con el venv activo).
 
 **IMPORTANTE:** Antes de ejecutar codigo, verifica que el entorno virtual esta activo:
 ```bash

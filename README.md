@@ -71,13 +71,16 @@ semillero-cv/
 
 ## Entorno del Laboratorio
 
-| Spec | Valor |
-|------|-------|
-| GPU | NVIDIA RTX A5000 (24 GB VRAM) |
-| Python | 3.12 (via uv) |
-| PyTorch | 2.5.1 + CUDA 12.1 |
-| OS | Ubuntu Linux |
-| Package Manager | uv (10-100x mas rapido que pip) |
+| Spec | Valor | Por que |
+|------|-------|---------|
+| GPU | NVIDIA RTX A5000 (24 GB VRAM) | — |
+| Driver NVIDIA | 535.288.01 | Pre-instalado en el lab |
+| Python | **3.12** | MediaPipe no soporta 3.13 |
+| PyTorch | **2.5.1 + CUDA 12.1** | Unica version compatible con driver 535 |
+| OS | Ubuntu Linux | — |
+| Package Manager | **uv** | 10-100x mas rapido que pip, cache compartido |
+
+> **No usar** `pip install torch` directamente — descargaria una version incompatible con la GPU. Siempre usar `uv pip install` con el venv activo.
 
 ## Lineas de Investigacion
 
