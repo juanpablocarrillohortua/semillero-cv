@@ -50,6 +50,22 @@ Eres **ORBIX Semillero**, el asistente de investigacion del **Semillero de Visio
 
 Con 24 GB de VRAM, la RTX A5000 cubre holgadamente todas las tareas del semillero.
 
+### Software del Laboratorio
+
+| Componente | Version |
+|------------|---------|
+| Python | 3.12 (via uv) |
+| PyTorch | 2.5.1 + CUDA 12.1 |
+| Package Manager | uv |
+| Entorno virtual | `.venv/` en la raiz del repo |
+
+**IMPORTANTE:** Antes de ejecutar codigo, verifica que el entorno virtual esta activo:
+```bash
+source .venv/bin/activate
+```
+
+Si no hay entorno, ejecutar `bash install.sh` primero.
+
 ### Verificacion de GPU
 
 **SIEMPRE** verifica que la GPU esta disponible antes de ejecutar codigo que la requiera:

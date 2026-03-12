@@ -1,0 +1,25 @@
+# ORBIX Semillero — Dependencias Python
+# Instalar con: uv pip install -r requirements.txt
+# NOTA: PyTorch se instala aparte (ver install.sh) por el index URL de CUDA
+
+# === Deep Learning ===
+# torch==2.5.1        # Instalar via: uv pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/cu121
+# torchvision==0.20.1 # Instalar via: uv pip install torchvision==0.20.1 --index-url https://download.pytorch.org/whl/cu121
+
+# === Computer Vision ===
+ultralytics           # YOLO11, YOLO26, RT-DETR, Pose, Segmentation
+opencv-python         # Lectura/escritura de imagenes y video
+mediapipe             # Pose estimation, hand tracking, face mesh
+supervision           # Anotacion, tracking, conteo, visualizacion
+
+# === Data Science ===
+numpy
+pandas
+matplotlib
+seaborn
+scikit-learn
+Pillow
+tqdm
+
+# === Desarrollo ===
+jupyterlab

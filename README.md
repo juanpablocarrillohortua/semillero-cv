@@ -2,41 +2,53 @@
 
 **Universidad Externado de Colombia — Programa de Ciencia de Datos**
 
-Repositorio del Semillero de Investigacion en Vision por Computador. Contiene el SDK de ORBIX Semillero, un asistente de IA especializado en Computer Vision que guia a investigadores en el desarrollo de aplicaciones de vision por computador.
+Repositorio del Semillero de Investigacion en Vision por Computador. Al clonar este repo y abrir un agente de IA (Gemini CLI, Claude Code, Codex CLI, etc.), el agente se convierte en **ORBIX Semillero**, tu asistente de investigacion en Computer Vision.
 
-## Inicio Rapido
+## Inicio Rapido (PC nueva)
 
 ```bash
 # 1. Clonar el repositorio
 git clone https://github.com/uexternado-cv/semillero-cv.git
 cd semillero-cv
 
-# 2. Verificar entorno
-bash setup.sh
+# 2. Instalar todo (Python, librerias CV, agentes IA)
+bash install.sh
 
-# 3. Abrir tu agente de IA preferido
-claude          # Claude Code
+# 3. Activar entorno
+source .venv/bin/activate
+
+# 4. Abrir tu agente de IA
+gemini          # Google Gemini CLI (gratis con cuenta Google)
 codex           # OpenAI Codex CLI
-gemini          # Google Gemini CLI
-aider           # Aider
-cursor .        # Cursor
+claude          # Claude Code
 ```
 
-El agente automaticamente se convierte en **ORBIX Semillero**, tu asistente de investigacion en CV.
+> **Primera vez con Gemini CLI:** ejecuta `gemini`, se abre el navegador para login con tu cuenta Google. Listo.
+
+## Sesiones Siguientes
+
+```bash
+cd semillero-cv
+source .venv/bin/activate
+gemini
+```
 
 ## Que es ORBIX Semillero?
 
-ORBIX Semillero (Vision Intelligence for Semillero Investigation and Orientation) es un agente de IA preconfigurado que:
+ORBIX Semillero es un agente de IA preconfigurado que:
 
-- Conoce los frameworks de CV disponibles (PyTorch, Ultralytics, MediaPipe, Supervision, OpenCV)
+- Conoce los frameworks de CV (PyTorch, Ultralytics, MediaPipe, Supervision, OpenCV)
 - Sabe crear aplicaciones de deteccion, tracking, pose estimation, segmentacion
-- Conoce el hardware del laboratorio (NVIDIA RTX A5000, 24 GB VRAM, CUDA 12.2)
+- Conoce el hardware del laboratorio (NVIDIA RTX A5000, 24 GB VRAM)
 - Te guia paso a paso en tus proyectos de investigacion
 
 ## Estructura del Repositorio
 
 ```
 semillero-cv/
+├── install.sh             # Instalador completo (correr una vez)
+├── setup.sh               # Verificacion de entorno
+├── requirements.txt       # Dependencias Python
 ├── AGENTS.md              # Configuracion principal del agente (estandar AAIF)
 ├── CLAUDE.md              # Adapter para Claude Code
 ├── GEMINI.md              # Adapter para Gemini CLI
@@ -51,10 +63,21 @@ semillero-cv/
 │   ├── segmentation.md
 │   ├── video-pipeline.md
 │   └── training.md
-├── templates/             # Templates para proyectos
+├── templates/             # Templates para proyectos de equipo
 ├── workshops/             # Talleres guiados
-└── datasets/              # Info sobre datasets
+├── models/                # Modelos descargados (gitignored)
+└── datasets/              # Info sobre datasets publicos
 ```
+
+## Entorno del Laboratorio
+
+| Spec | Valor |
+|------|-------|
+| GPU | NVIDIA RTX A5000 (24 GB VRAM) |
+| Python | 3.12 (via uv) |
+| PyTorch | 2.5.1 + CUDA 12.1 |
+| OS | Ubuntu Linux |
+| Package Manager | uv (10-100x mas rapido que pip) |
 
 ## Lineas de Investigacion
 
@@ -65,15 +88,35 @@ semillero-cv/
 | 3 | Re-identificacion de jugadores | torchreid, embeddings |
 | 4 | Generacion y analisis de datos deportivos con IA | Synthetic data, video analysis |
 
+## Agentes de IA Compatibles
+
+| Agente | Instalacion | Auth | Costo |
+|--------|-------------|------|-------|
+| **Gemini CLI** | `npm install -g @google/gemini-cli` | Login Google | Gratis |
+| **Codex CLI** | `npm install -g @openai/codex` | Cuenta ChatGPT | Gratis (Plus/Pro) |
+| **Claude Code** | `npm install -g @anthropic-ai/claude-code` | Cuenta Anthropic | Plan Max |
+| **Aider** | `uv pip install aider-chat` | API key (cualquier LLM) | Segun modelo |
+| **Cursor** | Descargar de cursor.com | Cuenta Cursor | Free tier |
+
 ## Credenciales (PCs Compartidos)
 
 Las PCs del laboratorio son compartidas. **Nunca guardes credenciales en archivos.**
 
 ```bash
 # Usa variables de entorno (mueren al cerrar terminal)
-export GEMINI_API_KEY="tu-key"
-export GH_TOKEN="tu-token"
+export GEMINI_API_KEY="tu-key"    # Solo si no usas login Google
+export GH_TOKEN="tu-token"        # Para GitHub (opcional)
 ```
+
+## Troubleshooting
+
+| Problema | Solucion |
+|----------|----------|
+| `nvidia-smi` no funciona | El driver NVIDIA no esta instalado. Pedir al profesor |
+| `ModuleNotFoundError` | Activar el entorno: `source .venv/bin/activate` |
+| PyTorch no ve GPU | Verificar: `python -c "import torch; print(torch.cuda.is_available())"` |
+| `gemini` no encontrado | `npm install -g @google/gemini-cli` |
+| Descarga lenta de modelos | Pedir modelos en USB al profesor |
 
 ## Contacto
 
