@@ -8,7 +8,7 @@
 # Tiempo estimado: 5-10 minutos (primera vez)
 # ============================================================
 
-set -e
+# set -e
 
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -46,7 +46,7 @@ echo ""
 echo "=== [2/6] Dependencias del sistema ==="
 sudo apt-get update -qq
 sudo apt-get install -y -qq git curl wget build-essential \
-    libgl1-mesa-glx libglib2.0-0 libsm6 libxext6 libxrender-dev \
+     libglib2.0-0 libsm6 libxext6 libxrender-dev \
     > /dev/null 2>&1
 ok "Dependencias del sistema instaladas"
 
